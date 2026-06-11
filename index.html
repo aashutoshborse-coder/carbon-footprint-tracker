@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="EcoTrack AI – Track your carbon footprint, receive AI-powered recommendations, and take daily actions to build a greener future." />
+  <meta name="keywords" content="carbon footprint, eco tracker, sustainability, green living, climate change, CO2 calculator" />
+  <meta name="author" content="EcoTrack AI" />
+  <meta property="og:title" content="EcoTrack AI – Carbon Footprint Awareness Platform" />
+  <meta property="og:description" content="Measure your environmental impact and get personalized recommendations to live sustainably." />
+  <meta property="og:type" content="website" />
+  <title>EcoTrack AI – Carbon Footprint Awareness Platform</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Phosphor Icons -->
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+
+
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════ NAVBAR ═══════════════════════════════════════════════ -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <!-- Logo -->
+      <a href="#home" class="nav-logo" aria-label="EcoTrack AI Home">
+        <div class="logo-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="20" cy="20" r="19" stroke="url(#logoGrad)" stroke-width="2"/>
+            <path d="M20 8 C12 14 10 20 14 26 C16 29 20 30 20 30 C20 30 24 29 26 26 C30 20 28 14 20 8Z" fill="url(#leafGrad)"/>
+            <path d="M20 30 C20 30 18 24 14 20" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="logoGrad" x1="0" y1="0" x2="40" y2="40">
+                <stop offset="0%" stop-color="#4ade80"/>
+                <stop offset="100%" stop-color="#06b6d4"/>
+              </linearGradient>
+              <linearGradient id="leafGrad" x1="10" y1="8" x2="30" y2="30">
+                <stop offset="0%" stop-color="#22c55e"/>
+                <stop offset="100%" stop-color="#16a34a"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="logo-text">EcoTrack <span class="logo-accent">AI</span></span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="#home" class="nav-link active" id="nav-home">Home</a></li>
+        <li><a href="#howitworks" class="nav-link" id="nav-howitworks">How It Works</a></li>
+        <li><a href="#calculator" class="nav-link" id="nav-calculator">Calculator</a></li>
+        <li><a href="#dashboard" class="nav-link" id="nav-dashboard">Dashboard</a></li>
+        <li><a href="#tips" class="nav-link" id="nav-tips">Green Tips</a></li>
+        <li><a href="#about" class="nav-link" id="nav-about">About</a></li>
+        <li><a href="#contact" class="nav-link" id="nav-contact">Contact</a></li>
+      </ul>
+
+      <!-- Right Controls -->
+      <div class="nav-controls">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode" title="Toggle theme">
+          <i class="ph ph-sun" id="themeIconSun"></i>
+          <i class="ph ph-moon" id="themeIconMoon"></i>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Open mobile menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation">
+    <ul role="list">
+      <li><a href="#home" class="mobile-link" onclick="closeMobileMenu()">Home</a></li>
+      <li><a href="#howitworks" class="mobile-link" onclick="closeMobileMenu()">How It Works</a></li>
+      <li><a href="#calculator" class="mobile-link" onclick="closeMobileMenu()">Calculator</a></li>
+      <li><a href="#dashboard" class="mobile-link" onclick="closeMobileMenu()">Dashboard</a></li>
+      <li><a href="#tips" class="mobile-link" onclick="closeMobileMenu()">Green Tips</a></li>
+      <li><a href="#about" class="mobile-link" onclick="closeMobileMenu()">About</a></li>
+      <li><a href="#contact" class="mobile-link" onclick="closeMobileMenu()">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════ HERO ═══════════════════════════════════════════════ -->
+  <section class="hero" id="home" aria-label="Hero section">
+    <!-- Forest Background Image -->
+    <div class="hero-bg-image" aria-hidden="true">
+      <img src="assets/eco_forest_hero.webp" alt="" loading="eager" />
+    </div>
+    <!-- Animated Background Particles -->
+    <div class="particles" aria-hidden="true">
+      <div class="particle p1"></div>
+      <div class="particle p2"></div>
+      <div class="particle p3"></div>
+      <div class="particle p4"></div>
+      <div class="particle p5"></div>
+      <div class="particle p6"></div>
+    </div>
+
+    <div class="hero-container">
+      <!-- Left Content -->
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="ph ph-leaf" aria-hidden="true"></i>
+          <span>AI-Powered Eco Intelligence</span>
+        </div>
+        <h1 class="hero-title">
+          Track Your Carbon Footprint.<br/>
+          <span class="gradient-text">Build a Greener Future.</span>
+        </h1>
+        <p class="hero-subtitle">
+          Measure your environmental impact, receive personalized AI recommendations, and take daily actions to reduce carbon emissions for a sustainable tomorrow.
+        </p>
+        <div class="hero-stats" aria-label="Platform statistics">
+          <div class="stat-item">
+            <span class="stat-number" data-target="12000">0</span><span>+</span>
+            <span class="stat-label">Users</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="850">0</span><span>T</span>
+            <span class="stat-label">CO₂ Saved</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="98">0</span><span>%</span>
+            <span class="stat-label">Satisfaction</span>
+          </div>
+        </div>
+        <div class="hero-buttons">
+          <a href="#calculator" class="btn btn-primary" id="heroCalcBtn">
+            <i class="ph ph-calculator" aria-hidden="true"></i>
+            Calculate Now
+          </a>
+          <a href="#about" class="btn btn-secondary" id="heroLearnBtn">
+            <i class="ph ph-play-circle" aria-hidden="true"></i>
+            Learn More
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Illustration -->
+      <div class="hero-illustration" aria-hidden="true">
+        <div class="eco-globe">
+          <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" class="globe-svg">
+            <defs>
+              <radialGradient id="globeGrad" cx="40%" cy="35%">
+                <stop offset="0%" stop-color="#4ade80" stop-opacity="0.3"/>
+                <stop offset="60%" stop-color="#16a34a" stop-opacity="0.15"/>
+                <stop offset="100%" stop-color="#052e16" stop-opacity="0.4"/>
+              </radialGradient>
+              <radialGradient id="glowGrad" cx="50%" cy="50%">
+                <stop offset="0%" stop-color="#4ade80" stop-opacity="0.4"/>
+                <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="leafG1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#4ade80"/>
+                <stop offset="100%" stop-color="#16a34a"/>
+              </linearGradient>
+              <linearGradient id="stemG" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#a3e635"/>
+                <stop offset="100%" stop-color="#4ade80"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Glow -->
+            <circle cx="160" cy="160" r="140" fill="url(#glowGrad)"/>
+
+            <!-- Globe outline -->
+            <circle cx="160" cy="160" r="110" fill="url(#globeGrad)" stroke="#4ade80" stroke-width="1.5" stroke-opacity="0.5"/>
+
+            <!-- Continents (simplified) -->
+            <path d="M120 110 Q130 100 145 108 Q160 95 170 110 Q180 108 185 120 Q178 130 170 135 Q165 145 155 140 Q145 150 135 145 Q125 148 118 138 Q112 128 120 110Z" fill="#4ade80" fill-opacity="0.6"/>
+            <path d="M175 140 Q185 130 195 138 Q202 145 200 155 Q195 160 185 158 Q178 160 175 152 Q170 145 175 140Z" fill="#4ade80" fill-opacity="0.5"/>
+            <path d="M130 165 Q140 158 150 165 Q160 162 165 172 Q162 182 155 185 Q148 188 140 183 Q132 180 128 173 Q126 168 130 165Z" fill="#4ade80" fill-opacity="0.55"/>
+            <path d="M88 155 Q95 148 105 153 Q110 160 107 168 Q100 172 93 167 Q86 162 88 155Z" fill="#4ade80" fill-opacity="0.45"/>
+
+            <!-- Grid lines -->
+            <ellipse cx="160" cy="160" rx="110" ry="40" fill="none" stroke="#4ade80" stroke-width="0.5" stroke-opacity="0.2"/>
+            <ellipse cx="160" cy="160" rx="110" ry="80" fill="none" stroke="#4ade80" stroke-width="0.5" stroke-opacity="0.15"/>
+            <line x1="160" y1="50" x2="160" y2="270" stroke="#4ade80" stroke-width="0.5" stroke-opacity="0.2"/>
+            <line x1="50" y1="160" x2="270" y2="160" stroke="#4ade80" stroke-width="0.5" stroke-opacity="0.2"/>
+
+            <!-- Trees floating around -->
+            <g transform="translate(60,60)">
+              <polygon points="0,-18 -14,0 14,0" fill="url(#leafG1)" opacity="0.9"/>
+              <polygon points="0,-26 -18,4 18,4" fill="url(#leafG1)" opacity="0.7" transform="translate(0,8)"/>
+              <rect x="-3" y="4" width="6" height="14" rx="2" fill="url(#stemG)"/>
+            </g>
+            <g transform="translate(248,80)">
+              <polygon points="0,-14 -10,0 10,0" fill="url(#leafG1)" opacity="0.8"/>
+              <polygon points="0,-20 -14,4 14,4" fill="url(#leafG1)" opacity="0.6" transform="translate(0,6)"/>
+              <rect x="-2" y="4" width="5" height="10" rx="2" fill="url(#stemG)"/>
+            </g>
+            <g transform="translate(70,230)">
+              <polygon points="0,-16 -12,0 12,0" fill="url(#leafG1)" opacity="0.75"/>
+              <polygon points="0,-22 -16,4 16,4" fill="url(#leafG1)" opacity="0.55" transform="translate(0,7)"/>
+              <rect x="-2.5" y="4" width="5" height="12" rx="2" fill="url(#stemG)"/>
+            </g>
+            <g transform="translate(240,240)">
+              <polygon points="0,-20 -15,0 15,0" fill="url(#leafG1)" opacity="0.85"/>
+              <polygon points="0,-28 -20,4 20,4" fill="url(#leafG1)" opacity="0.65" transform="translate(0,9)"/>
+              <rect x="-3" y="5" width="6" height="14" rx="2" fill="url(#stemG)"/>
+            </g>
+
+            <!-- CO2 molecule floating -->
+            <g class="float-anim" transform="translate(200,115)">
+              <circle cx="0" cy="0" r="8" fill="#06b6d4" fill-opacity="0.8"/>
+              <text x="0" y="4" text-anchor="middle" fill="white" font-size="7" font-weight="bold">CO₂</text>
+            </g>
+
+            <!-- Leaf icon -->
+            <g transform="translate(100,185)" class="float-anim-rev">
+              <path d="M0,-12 C-8,-6 -8,4 0,8 C8,4 8,-6 0,-12Z" fill="#a3e635" fill-opacity="0.9"/>
+              <line x1="0" y1="-2" x2="0" y2="8" stroke="#4ade80" stroke-width="1"/>
+            </g>
+          </svg>
+
+          <!-- Floating Cards -->
+          <div class="float-card card-score" role="status" aria-label="Eco Score">
+            <div class="fc-icon"><i class="ph ph-star" aria-hidden="true"></i></div>
+            <div class="fc-content">
+              <span class="fc-label">Eco Score</span>
+              <span class="fc-value">92/100</span>
+            </div>
+          </div>
+          <div class="float-card card-co2" role="status" aria-label="CO2 Saved">
+            <div class="fc-icon co2-icon"><i class="ph ph-cloud" aria-hidden="true"></i></div>
+            <div class="fc-content">
+              <span class="fc-label">CO₂ Saved</span>
+              <span class="fc-value">2.4 T</span>
+            </div>
+          </div>
+          <div class="float-card card-streak" role="status" aria-label="Day streak">
+            <div class="fc-icon streak-icon"><i class="ph ph-fire" aria-hidden="true"></i></div>
+            <div class="fc-content">
+              <span class="fc-label">Day Streak</span>
+              <span class="fc-value">14 🔥</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-dot"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ HOW IT WORKS ═══════════════════════════════════════════════ -->
+  <section class="section howitworks-section" id="howitworks" aria-labelledby="howHeading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">
+          <i class="ph ph-question" aria-hidden="true"></i>
+          <span>How It Works</span>
+        </div>
+        <h2 class="section-title" id="howHeading">Simple <span class="gradient-text">3-Step Process</span></h2>
+        <p class="section-subtitle">Getting started with EcoTrack AI takes less than 2 minutes. Here's exactly how it works.</p>
+      </div>
+
+      <div class="how-layout">
+        <!-- Steps -->
+        <div class="how-steps" role="list" aria-label="How it works steps">
+          <!-- Step 1 -->
+          <div class="how-step glass-card fade-in-up" role="listitem">
+            <div class="how-step-num">01</div>
+            <div class="how-step-icon" aria-hidden="true"><i class="ph ph-clipboard-text"></i></div>
+            <div class="how-step-content">
+              <h3 class="how-step-title">Fill the Calculator</h3>
+              <p class="how-step-desc">Answer quick questions about your transport, electricity, food habits, flights, plastic use, and household size. Takes under 2 minutes.</p>
+              <ul class="how-step-list">
+                <li><i class="ph ph-check" aria-hidden="true"></i> No account required</li>
+                <li><i class="ph ph-check" aria-hidden="true"></i> 100% private &amp; local</li>
+                <li><i class="ph ph-check" aria-hidden="true"></i> Works on any device</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Step 2 -->
+          <div class="how-step glass-card fade-in-up" role="listitem" style="transition-delay:0.12s">
+            <div class="how-step-num">02</div>
+            <div class="how-step-icon how-icon-blue" aria-hidden="true"><i class="ph ph-robot"></i></div>
+            <div class="how-step-content">
+              <h3 class="how-step-title">AI Analyses Your Footprint</h3>
+              <p class="how-step-desc">Our algorithm calculates your annual CO₂ emissions using evidence-based emission factors and instantly generates your personal Eco Score (0–100).</p>
+              <ul class="how-step-list">
+                <li><i class="ph ph-check" aria-hidden="true"></i> Eco Score with animated ring</li>
+                <li><i class="ph ph-check" aria-hidden="true"></i> CO₂ tonnes estimate</li>
+                <li><i class="ph ph-check" aria-hidden="true"></i> Trees-to-offset calculation</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Step 3 -->
+          <div class="how-step glass-card fade-in-up" role="listitem" style="transition-delay:0.24s">
+            <div class="how-step-num">03</div>
+            <div class="how-step-icon how-icon-amber" aria-hidden="true"><i class="ph ph-rocket-launch"></i></div>
+            <div class="how-step-content">
+              <h3 class="how-step-title">Take Action &amp; Track Progress</h3>
+              <p class="how-step-desc">Follow personalised AI recommendations, complete daily green challenges to earn points, and watch your weekly dashboard improve week by week.</p>
+              <ul class="how-step-list">
+                <li><i class="ph ph-check" aria-hidden="true"></i> Personalised recommendations</li>
+                <li><i class="ph ph-check" aria-hidden="true"></i> Daily gamified challenges</li>
+                <li><i class="ph ph-check" aria-hidden="true"></i> Weekly progress chart</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Image -->
+        <div class="how-image-wrap" aria-hidden="true">
+          <div class="how-img-frame">
+            <img src="assets/how_it_works_photographic.webp"
+                 alt="Three steps showing how EcoTrack AI works"
+                 loading="lazy"
+                 class="how-img" />
+            <div class="how-img-badge badge-top">
+              <i class="ph-fill ph-lightning"></i>
+              <span>Instant Results</span>
+            </div>
+            <div class="how-img-badge badge-bottom">
+              <i class="ph-fill ph-shield-check"></i>
+              <span>No Data Stored Online</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ CALCULATOR ═══════════════════════════════════════════════ -->
+  <section class="section calculator-section" id="calculator" aria-labelledby="calcHeading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">
+          <i class="ph ph-calculator" aria-hidden="true"></i>
+          <span>Carbon Calculator</span>
+        </div>
+        <h2 class="section-title" id="calcHeading">Measure Your <span class="gradient-text">Environmental Impact</span></h2>
+        <p class="section-subtitle">Answer a few questions and our AI engine will calculate your carbon footprint instantly.</p>
+      </div>
+
+      <div class="calc-layout">
+        <!-- Form -->
+        <div class="calc-form-wrapper glass-card" role="form" aria-label="Carbon footprint calculator form">
+          <form id="calcForm" novalidate>
+
+            <!-- Transportation -->
+            <div class="form-group">
+              <label class="form-label">
+                <i class="ph ph-car" aria-hidden="true"></i>
+                Primary Mode of Transportation
+              </label>
+              <div class="option-grid" role="radiogroup" aria-label="Transportation mode">
+                <label class="option-card" id="transport-car-label">
+                  <input type="radio" name="transport" value="car" id="transport-car" required />
+                  <span class="option-icon"><i class="ph ph-car" aria-hidden="true"></i></span>
+                  <span class="option-text">Car</span>
+                </label>
+                <label class="option-card" id="transport-bike-label">
+                  <input type="radio" name="transport" value="bike" id="transport-bike" />
+                  <span class="option-icon"><i class="ph ph-bicycle" aria-hidden="true"></i></span>
+                  <span class="option-text">Bike</span>
+                </label>
+                <label class="option-card" id="transport-public-label">
+                  <input type="radio" name="transport" value="public" id="transport-public" />
+                  <span class="option-icon"><i class="ph ph-bus" aria-hidden="true"></i></span>
+                  <span class="option-text">Public</span>
+                </label>
+                <label class="option-card" id="transport-walk-label">
+                  <input type="radio" name="transport" value="walk" id="transport-walk" />
+                  <span class="option-icon"><i class="ph ph-person-simple-walk" aria-hidden="true"></i></span>
+                  <span class="option-text">Walking</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Electricity -->
+            <div class="form-group">
+              <label class="form-label">
+                <i class="ph ph-lightning" aria-hidden="true"></i>
+                Monthly Electricity Usage
+              </label>
+              <div class="option-grid" role="radiogroup" aria-label="Electricity usage level">
+                <label class="option-card wide" id="elec-low-label">
+                  <input type="radio" name="electricity" value="low" id="elec-low" required />
+                  <span class="option-icon"><i class="ph ph-battery-low" aria-hidden="true"></i></span>
+                  <span class="option-text">Low<br/><small>&lt;200 kWh</small></span>
+                </label>
+                <label class="option-card wide" id="elec-medium-label">
+                  <input type="radio" name="electricity" value="medium" id="elec-medium" />
+                  <span class="option-icon"><i class="ph ph-battery-medium" aria-hidden="true"></i></span>
+                  <span class="option-text">Medium<br/><small>200–500 kWh</small></span>
+                </label>
+                <label class="option-card wide" id="elec-high-label">
+                  <input type="radio" name="electricity" value="high" id="elec-high" />
+                  <span class="option-icon"><i class="ph ph-battery-full" aria-hidden="true"></i></span>
+                  <span class="option-text">High<br/><small>&gt;500 kWh</small></span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Food Habit -->
+            <div class="form-group">
+              <label class="form-label">
+                <i class="ph ph-fork-knife" aria-hidden="true"></i>
+                Food Habits
+              </label>
+              <div class="option-grid" role="radiogroup" aria-label="Food habits">
+                <label class="option-card wide" id="food-veg-label">
+                  <input type="radio" name="food" value="vegetarian" id="food-veg" required />
+                  <span class="option-icon"><i class="ph ph-leaf" aria-hidden="true"></i></span>
+                  <span class="option-text">Vegetarian</span>
+                </label>
+                <label class="option-card wide" id="food-mixed-label">
+                  <input type="radio" name="food" value="mixed" id="food-mixed" />
+                  <span class="option-icon"><i class="ph ph-bowl-food" aria-hidden="true"></i></span>
+                  <span class="option-text">Mixed</span>
+                </label>
+                <label class="option-card wide" id="food-nonveg-label">
+                  <input type="radio" name="food" value="nonveg" id="food-nonveg" />
+                  <span class="option-icon"><i class="ph ph-hamburger" aria-hidden="true"></i></span>
+                  <span class="option-text">Non-Veg</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Flights -->
+            <div class="form-group">
+              <label class="form-label" for="flights">
+                <i class="ph ph-airplane" aria-hidden="true"></i>
+                Flights per Year
+              </label>
+              <div class="slider-wrapper">
+                <input type="range" id="flights" name="flights" min="0" max="20" value="2" class="eco-slider" aria-valuemin="0" aria-valuemax="20" aria-valuenow="2" />
+                <div class="slider-labels">
+                  <span>0</span>
+                  <span class="slider-value" id="flightsValue">2 flights</span>
+                  <span>20</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Plastic Usage -->
+            <div class="form-group">
+              <label class="form-label">
+                <i class="ph ph-bottle" aria-hidden="true"></i>
+                Plastic Usage
+              </label>
+              <div class="option-grid" role="radiogroup" aria-label="Plastic usage level">
+                <label class="option-card wide" id="plastic-low-label">
+                  <input type="radio" name="plastic" value="low" id="plastic-low" required />
+                  <span class="option-icon"><i class="ph ph-smiley" aria-hidden="true"></i></span>
+                  <span class="option-text">Low</span>
+                </label>
+                <label class="option-card wide" id="plastic-medium-label">
+                  <input type="radio" name="plastic" value="medium" id="plastic-medium" />
+                  <span class="option-icon"><i class="ph ph-smiley-meh" aria-hidden="true"></i></span>
+                  <span class="option-text">Medium</span>
+                </label>
+                <label class="option-card wide" id="plastic-high-label">
+                  <input type="radio" name="plastic" value="high" id="plastic-high" />
+                  <span class="option-icon"><i class="ph ph-smiley-sad" aria-hidden="true"></i></span>
+                  <span class="option-text">High</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Household Size -->
+            <div class="form-group">
+              <label class="form-label" for="household">
+                <i class="ph ph-house" aria-hidden="true"></i>
+                Household Size
+              </label>
+              <div class="slider-wrapper">
+                <input type="range" id="household" name="household" min="1" max="10" value="3" class="eco-slider" aria-valuemin="1" aria-valuemax="10" aria-valuenow="3" />
+                <div class="slider-labels">
+                  <span>1</span>
+                  <span class="slider-value" id="householdValue">3 people</span>
+                  <span>10</span>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full" id="calcSubmitBtn">
+              <i class="ph ph-chart-bar" aria-hidden="true"></i>
+              Calculate My Carbon Footprint
+            </button>
+          </form>
+        </div>
+
+        <!-- Result Panel -->
+        <div class="calc-result" id="calcResult" aria-live="polite" aria-label="Calculation results">
+          <!-- Default State -->
+          <div class="result-placeholder" id="resultPlaceholder">
+            <div class="placeholder-illustration" aria-hidden="true">
+              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="100" cy="100" r="80" fill="none" stroke="url(#pGrad)" stroke-width="2" stroke-dasharray="8 4"/>
+                <circle cx="100" cy="100" r="55" fill="url(#pFill)" fill-opacity="0.15"/>
+                <path d="M100 60 C80 72 76 88 84 104 C88 112 100 116 100 116 C100 116 112 112 116 104 C124 88 120 72 100 60Z" fill="#4ade80" fill-opacity="0.7"/>
+                <path d="M100 116 C100 116 96 104 84 96" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+                <text x="100" y="155" text-anchor="middle" fill="#4ade80" font-size="11" font-family="Inter" fill-opacity="0.8">Fill the form to see</text>
+                <text x="100" y="170" text-anchor="middle" fill="#4ade80" font-size="11" font-family="Inter" fill-opacity="0.8">your Eco Score</text>
+                <defs>
+                  <linearGradient id="pGrad" x1="0" y1="0" x2="200" y2="200">
+                    <stop offset="0%" stop-color="#4ade80"/>
+                    <stop offset="100%" stop-color="#06b6d4"/>
+                  </linearGradient>
+                  <radialGradient id="pFill">
+                    <stop offset="0%" stop-color="#4ade80"/>
+                    <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+              </svg>
+            </div>
+            <p>Complete the form and click <strong>Calculate</strong> to see your personalized eco score and recommendations.</p>
+          </div>
+
+          <!-- Score Card (hidden until calculated) -->
+          <div class="score-card glass-card" id="scoreCard" hidden aria-label="Your eco score results">
+            <div class="score-ring-wrapper">
+              <svg class="score-ring" viewBox="0 0 180 180" aria-hidden="true">
+                <circle cx="90" cy="90" r="75" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="12"/>
+                <circle cx="90" cy="90" r="75" fill="none" stroke="url(#ringGrad)" stroke-width="12"
+                  stroke-linecap="round" stroke-dasharray="471" stroke-dashoffset="471"
+                  id="scoreCircle" transform="rotate(-90 90 90)"/>
+                <defs>
+                  <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#4ade80"/>
+                    <stop offset="100%" stop-color="#06b6d4"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+              <div class="score-center">
+                <span class="score-number" id="scoreNumber">0</span>
+                <span class="score-label-sm">/ 100</span>
+              </div>
+            </div>
+            <div class="score-info">
+              <div class="score-level" id="scoreLevel"></div>
+              <div class="score-desc" id="scoreDesc"></div>
+              <div class="score-metrics">
+                <div class="metric-item">
+                  <i class="ph ph-cloud" aria-hidden="true"></i>
+                  <span id="metricCo2">0</span> T CO₂/yr
+                </div>
+                <div class="metric-item">
+                  <i class="ph ph-tree" aria-hidden="true"></i>
+                  <span id="metricTrees">0</span> trees/yr offset
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI Recommendations -->
+          <div class="recommendations" id="recommendations" hidden aria-label="AI recommendations">
+            <h3 class="rec-title">
+              <i class="ph ph-robot" aria-hidden="true"></i>
+              AI Smart Recommendations
+            </h3>
+            <div class="rec-list" id="recList" role="list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ DAILY CHALLENGE ═══════════════════════════════════════════════ -->
+  <section class="section challenge-section" id="challenge" aria-labelledby="challengeHeading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">
+          <i class="ph ph-trophy" aria-hidden="true"></i>
+          <span>Daily Challenge</span>
+        </div>
+        <h2 class="section-title" id="challengeHeading">Your Green <span class="gradient-text">Daily Mission</span></h2>
+        <p class="section-subtitle">Complete daily eco challenges to earn Green Points and track your sustainability journey.</p>
+      </div>
+
+      <div class="challenge-layout">
+        <div class="challenge-main glass-card" aria-label="Today's challenge">
+          <div class="challenge-top">
+            <div class="challenge-badge-icon" aria-hidden="true">
+              <i class="ph ph-star" id="challengeIcon"></i>
+            </div>
+            <div class="challenge-meta">
+              <span class="challenge-day">Today's Challenge</span>
+              <span class="challenge-points" id="challengePoints">+25 Points</span>
+            </div>
+          </div>
+          <p class="challenge-text" id="challengeText" aria-live="polite">Loading today's challenge...</p>
+          <div class="challenge-actions">
+            <button class="btn btn-primary" id="completeBtn" aria-pressed="false">
+              <i class="ph ph-check-circle" aria-hidden="true"></i>
+              <span id="completeBtnText">Mark as Completed</span>
+            </button>
+            <button class="btn btn-ghost" id="newChallengeBtn">
+              <i class="ph ph-arrows-clockwise" aria-hidden="true"></i>
+              New Challenge
+            </button>
+          </div>
+        </div>
+
+        <div class="challenge-sidebar">
+          <div class="points-card glass-card" role="status" aria-label="Green Points balance">
+            <div class="points-icon" aria-hidden="true"><i class="ph ph-leaf"></i></div>
+            <div class="points-info">
+              <span class="points-label">Green Points</span>
+              <span class="points-value" id="greenPoints">0</span>
+            </div>
+            <div class="points-bar">
+              <div class="points-fill" id="pointsFill"></div>
+            </div>
+            <span class="points-hint">Next badge at 500 pts</span>
+          </div>
+
+          <div class="streak-card glass-card" role="status" aria-label="Challenge streak">
+            <i class="ph ph-fire streak-fire" aria-hidden="true"></i>
+            <div class="streak-info">
+              <span class="streak-num" id="streakCount">0</span>
+              <span class="streak-label">Day Streak</span>
+            </div>
+          </div>
+
+          <div class="completed-card glass-card" role="status" aria-label="Total challenges completed">
+            <i class="ph ph-check-circle" aria-hidden="true" style="color:#4ade80;font-size:2rem;margin-bottom:0.5rem;"></i>
+            <span class="streak-num" id="completedCount">0</span>
+            <span class="streak-label">Challenges Completed</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ DASHBOARD ═══════════════════════════════════════════════ -->
+  <section class="section dashboard-section" id="dashboard" aria-labelledby="dashHeading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">
+          <i class="ph ph-chart-line-up" aria-hidden="true"></i>
+          <span>Eco Dashboard</span>
+        </div>
+        <h2 class="section-title" id="dashHeading">Your <span class="gradient-text">Impact Overview</span></h2>
+        <p class="section-subtitle">Track your progress and see how your actions are making a real difference.</p>
+      </div>
+
+      <!-- KPI Cards -->
+      <div class="kpi-grid" role="list" aria-label="Key performance indicators">
+        <div class="kpi-card glass-card" role="listitem">
+          <div class="kpi-icon kpi-green" aria-hidden="true"><i class="ph-fill ph-leaf"></i></div>
+          <div class="kpi-content">
+            <span class="kpi-label">Current Eco Score</span>
+            <span class="kpi-value counter" id="kpiScore" data-target="0">0</span>
+            <span class="kpi-unit">/ 100</span>
+          </div>
+          <div class="kpi-trend up" aria-label="Trending up">
+            <i class="ph ph-trend-up" aria-hidden="true"></i> +5%
+          </div>
+        </div>
+        <div class="kpi-card glass-card" role="listitem">
+          <div class="kpi-icon kpi-blue" aria-hidden="true"><i class="ph-fill ph-star"></i></div>
+          <div class="kpi-content">
+            <span class="kpi-label">Green Points</span>
+            <span class="kpi-value counter" id="kpiPoints" data-target="0">0</span>
+            <span class="kpi-unit">pts</span>
+          </div>
+          <div class="kpi-trend up" aria-label="Trending up">
+            <i class="ph ph-trend-up" aria-hidden="true"></i> +12%
+          </div>
+        </div>
+        <div class="kpi-card glass-card" role="listitem">
+          <div class="kpi-icon kpi-amber" aria-hidden="true"><i class="ph-fill ph-trophy"></i></div>
+          <div class="kpi-content">
+            <span class="kpi-label">Challenges Done</span>
+            <span class="kpi-value counter" id="kpiChallenges" data-target="0">0</span>
+            <span class="kpi-unit">total</span>
+          </div>
+          <div class="kpi-trend up" aria-label="Trending up">
+            <i class="ph ph-trend-up" aria-hidden="true"></i> +8%
+          </div>
+        </div>
+        <div class="kpi-card glass-card" role="listitem">
+          <div class="kpi-icon kpi-teal" aria-hidden="true"><i class="ph-fill ph-cloud"></i></div>
+          <div class="kpi-content">
+            <span class="kpi-label">Est. CO₂ Saved</span>
+            <span class="kpi-value counter" id="kpiCo2" data-target="0">0</span>
+            <span class="kpi-unit">kg</span>
+          </div>
+          <div class="kpi-trend up" aria-label="Trending up">
+            <i class="ph ph-trend-up" aria-hidden="true"></i> +18%
+          </div>
+        </div>
+      </div>
+
+      <!-- Weekly Progress Chart -->
+      <div class="chart-wrapper glass-card" aria-label="Weekly progress chart">
+        <div class="chart-header">
+          <h3 class="chart-title">
+            <i class="ph ph-chart-bar" aria-hidden="true"></i>
+            Weekly Eco Progress
+          </h3>
+          <div class="chart-legend" aria-label="Chart legend">
+            <span class="legend-item"><span class="legend-dot green"></span>Eco Score</span>
+            <span class="legend-item"><span class="legend-dot blue"></span>CO₂ Saved (kg)</span>
+          </div>
+        </div>
+        <div class="chart-container">
+          <canvas id="weeklyChart" aria-label="Weekly progress line chart" role="img"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ GREEN TIPS ═══════════════════════════════════════════════ -->
+  <section class="section tips-section" id="tips" aria-labelledby="tipsHeading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">
+          <i class="ph ph-lightbulb" aria-hidden="true"></i>
+          <span>Green Tips</span>
+        </div>
+        <h2 class="section-title" id="tipsHeading">Eco-Friendly <span class="gradient-text">Living Tips</span></h2>
+        <p class="section-subtitle">Simple everyday actions that collectively make a massive positive impact on our planet.</p>
+      </div>
+
+      <div class="tips-grid" role="list" aria-label="Green living tips">
+
+        <!-- Card 1 -->
+        <div class="tip-card glass-card" role="listitem" tabindex="0" aria-label="Save Electricity tip">
+          <div class="tip-img-wrap tip-yellow">
+            <img src="assets/tip_electricity.webp" alt="LED bulb and solar panels" loading="lazy" class="tip-img" />
+            <div class="tip-img-overlay"></div>
+            <span class="tip-icon-badge"><i class="ph-fill ph-lightning"></i></span>
+          </div>
+          <div class="tip-body">
+            <h3 class="tip-title">Save Electricity</h3>
+            <p class="tip-desc">Switch off lights and appliances when not in use. Use LED bulbs and smart power strips. Unplug chargers when not charging.</p>
+            <div class="tip-impact"><i class="ph ph-arrow-down" aria-hidden="true"></i> Saves ~200kg CO₂/yr</div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="tip-card glass-card" role="listitem" tabindex="0" aria-label="Reduce Food Waste tip">
+          <div class="tip-img-wrap tip-green">
+            <img src="assets/tip_food_waste.webp" alt="Compost bin with fresh vegetables" loading="lazy" class="tip-img" />
+            <div class="tip-img-overlay"></div>
+            <span class="tip-icon-badge"><i class="ph-fill ph-leaf"></i></span>
+          </div>
+          <div class="tip-body">
+            <h3 class="tip-title">Reduce Food Waste</h3>
+            <p class="tip-desc">Plan meals, store food properly, compost scraps, and buy only what you need. Food waste accounts for 8% of global emissions.</p>
+            <div class="tip-impact"><i class="ph ph-arrow-down" aria-hidden="true"></i> Saves ~150kg CO₂/yr</div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="tip-card glass-card" role="listitem" tabindex="0" aria-label="Use Public Transport tip">
+          <div class="tip-img-wrap tip-blue">
+            <img src="assets/tip_transport.webp" alt="Electric bus and bicycle on city street" loading="lazy" class="tip-img" />
+            <div class="tip-img-overlay"></div>
+            <span class="tip-icon-badge"><i class="ph-fill ph-bus"></i></span>
+          </div>
+          <div class="tip-body">
+            <h3 class="tip-title">Use Public Transport</h3>
+            <p class="tip-desc">Taking the bus or train instead of driving can reduce your transport emissions by up to 75% per journey.</p>
+            <div class="tip-impact"><i class="ph ph-arrow-down" aria-hidden="true"></i> Saves ~1.5T CO₂/yr</div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="tip-card glass-card" role="listitem" tabindex="0" aria-label="Plant Trees tip">
+          <div class="tip-img-wrap tip-teal">
+            <img src="assets/tip_trees.webp" alt="Person planting a tree sapling" loading="lazy" class="tip-img" />
+            <div class="tip-img-overlay"></div>
+            <span class="tip-icon-badge"><i class="ph-fill ph-tree"></i></span>
+          </div>
+          <div class="tip-body">
+            <h3 class="tip-title">Plant Trees</h3>
+            <p class="tip-desc">A single tree absorbs ~21 kg of CO₂ per year. Support reforestation projects or plant native trees in your community.</p>
+            <div class="tip-impact"><i class="ph ph-arrow-up" aria-hidden="true"></i> Absorbs ~21kg CO₂/tree/yr</div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="tip-card glass-card" role="listitem" tabindex="0" aria-label="Recycle tip">
+          <div class="tip-img-wrap tip-purple">
+            <img src="assets/tip_recycle.webp" alt="Colorful recycling bins with sorted waste" loading="lazy" class="tip-img" />
+            <div class="tip-img-overlay"></div>
+            <span class="tip-icon-badge"><i class="ph-fill ph-recycle"></i></span>
+          </div>
+          <div class="tip-body">
+            <h3 class="tip-title">Recycle</h3>
+            <p class="tip-desc">Properly sort and recycle paper, plastic, glass, and metal. Recycling aluminum uses 95% less energy than making it fresh.</p>
+            <div class="tip-impact"><i class="ph ph-arrow-down" aria-hidden="true"></i> Saves ~100kg CO₂/yr</div>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="tip-card glass-card" role="listitem" tabindex="0" aria-label="Save Water tip">
+          <div class="tip-img-wrap tip-cyan">
+            <img src="assets/tip_water.webp" alt="Crystal clear water drop conservation" loading="lazy" class="tip-img" />
+            <div class="tip-img-overlay"></div>
+            <span class="tip-icon-badge"><i class="ph-fill ph-drop"></i></span>
+          </div>
+          <div class="tip-body">
+            <h3 class="tip-title">Save Water</h3>
+            <p class="tip-desc">Take shorter showers, fix leaks promptly, and install water-efficient fixtures. Water treatment is energy-intensive.</p>
+            <div class="tip-impact"><i class="ph ph-arrow-down" aria-hidden="true"></i> Saves ~50kg CO₂/yr</div>
+          </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="tip-card glass-card" role="listitem" tabindex="0" aria-label="Renewable Energy tip">
+          <div class="tip-img-wrap tip-orange">
+            <img src="assets/tip_solar.webp" alt="Solar panels on rooftop with wind turbines" loading="lazy" class="tip-img" />
+            <div class="tip-img-overlay"></div>
+            <span class="tip-icon-badge"><i class="ph-fill ph-sun"></i></span>
+          </div>
+          <div class="tip-body">
+            <h3 class="tip-title">Renewable Energy</h3>
+            <p class="tip-desc">Switch to a green energy tariff or install solar panels. Renewable energy eliminates household electricity emissions.</p>
+            <div class="tip-impact"><i class="ph ph-arrow-down" aria-hidden="true"></i> Saves ~1.4T CO₂/yr</div>
+          </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="tip-card glass-card" role="listitem" tabindex="0" aria-label="Cloth Bags tip">
+          <div class="tip-img-wrap tip-rose">
+            <img src="assets/tip_bags.webp" alt="Reusable cloth shopping bags with groceries" loading="lazy" class="tip-img" />
+            <div class="tip-img-overlay"></div>
+            <span class="tip-icon-badge"><i class="ph-fill ph-bag"></i></span>
+          </div>
+          <div class="tip-body">
+            <h3 class="tip-title">Cloth Bags</h3>
+            <p class="tip-desc">Replace single-use plastic bags with reusable cloth bags. One reusable bag replaces ~700 plastic bags over its lifetime.</p>
+            <div class="tip-impact"><i class="ph ph-arrow-down" aria-hidden="true"></i> Saves ~30kg CO₂/yr</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ MORE GREEN ACTIONS ═══════════════════════════════════════════════ -->
+  <section class="section more-tips-section" id="moretips" aria-labelledby="moreTipsHeading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">
+          <i class="ph ph-sparkle" aria-hidden="true"></i>
+          <span>Level Up</span>
+        </div>
+        <h2 class="section-title" id="moreTipsHeading">More <span class="gradient-text">Green Actions</span></h2>
+        <p class="section-subtitle">Go beyond the basics — these powerful lifestyle shifts create the biggest environmental impact.</p>
+      </div>
+
+      <div class="more-tips-grid" role="list" aria-label="More green actions">
+
+        <!-- Big Card 1 -->
+        <div class="more-tip-card glass-card" role="listitem" aria-label="Plant-based diet tip">
+          <div class="more-tip-img-wrap">
+            <img src="assets/tip_vegan.webp" alt="Colourful plant-based meal bowl" loading="lazy" class="more-tip-img" />
+            <div class="more-tip-overlay"></div>
+            <div class="more-tip-label">
+              <span class="mtl-badge"><i class="ph-fill ph-leaf"></i> High Impact</span>
+            </div>
+          </div>
+          <div class="more-tip-content">
+            <div class="more-tip-icon-row">
+              <div class="mtic mtic-green"><i class="ph ph-fork-knife"></i></div>
+              <span class="more-tip-save">Saves ~0.5T CO₂/yr</span>
+            </div>
+            <h3 class="more-tip-title">Go Plant-Based</h3>
+            <p class="more-tip-desc">Switching to a plant-based diet even 3 days a week significantly cuts the greenhouse gases linked to meat and dairy production. It's one of the most impactful personal choices you can make.</p>
+            <ul class="more-tip-points">
+              <li><i class="ph-fill ph-check-circle"></i> Reduces land and water use</li>
+              <li><i class="ph-fill ph-check-circle"></i> Lowers methane emissions</li>
+              <li><i class="ph-fill ph-check-circle"></i> Supports biodiversity</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Big Card 2 -->
+        <div class="more-tip-card glass-card" role="listitem" aria-label="Sustainable fashion tip">
+          <div class="more-tip-img-wrap">
+            <img src="assets/tip_secondhand.webp" alt="Second-hand clothing rack" loading="lazy" class="more-tip-img" />
+            <div class="more-tip-overlay"></div>
+            <div class="more-tip-label">
+              <span class="mtl-badge mtl-amber"><i class="ph ph-handbag"></i> Fashion</span>
+            </div>
+          </div>
+          <div class="more-tip-content">
+            <div class="more-tip-icon-row">
+              <div class="mtic mtic-amber"><i class="ph ph-t-shirt"></i></div>
+              <span class="more-tip-save">Saves ~300kg CO₂/yr</span>
+            </div>
+            <h3 class="more-tip-title">Shop Second-Hand</h3>
+            <p class="more-tip-desc">Fast fashion is one of the world's biggest polluters. Buying second-hand, renting, or swapping clothes drastically reduces textile waste and factory emissions.</p>
+            <ul class="more-tip-points">
+              <li><i class="ph-fill ph-check-circle"></i> Reduces textile factory waste</li>
+              <li><i class="ph-fill ph-check-circle"></i> Saves water (1 jeans = 7,500L)</li>
+              <li><i class="ph-fill ph-check-circle"></i> Circular economy model</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Big Card 3 -->
+        <div class="more-tip-card glass-card" role="listitem" aria-label="Community action tip">
+          <div class="more-tip-img-wrap">
+            <img src="assets/tip_community.webp" alt="Community members planting together" loading="lazy" class="more-tip-img" />
+            <div class="more-tip-overlay"></div>
+            <div class="more-tip-label">
+              <span class="mtl-badge mtl-teal"><i class="ph ph-users-three"></i> Community</span>
+            </div>
+          </div>
+          <div class="more-tip-content">
+            <div class="more-tip-icon-row">
+              <div class="mtic mtic-teal"><i class="ph ph-hands-clapping"></i></div>
+              <span class="more-tip-save">Multiplied impact</span>
+            </div>
+            <h3 class="more-tip-title">Community Action</h3>
+            <p class="more-tip-desc">Join or organise local clean-up drives, community gardens, and awareness campaigns. Collective action amplifies individual effort and drives policy-level change.</p>
+            <ul class="more-tip-points">
+              <li><i class="ph-fill ph-check-circle"></i> Local clean-up events</li>
+              <li><i class="ph-fill ph-check-circle"></i> Community solar programmes</li>
+              <li><i class="ph-fill ph-check-circle"></i> Influence local policy</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Big Card 4 -->
+        <div class="more-tip-card glass-card" role="listitem" aria-label="Go digital tip">
+          <div class="more-tip-img-wrap">
+            <img src="assets/tip_digital.webp" alt="Paperless digital eco office" loading="lazy" class="more-tip-img" />
+            <div class="more-tip-overlay"></div>
+            <div class="more-tip-label">
+              <span class="mtl-badge mtl-blue"><i class="ph ph-device-mobile"></i> Digital</span>
+            </div>
+          </div>
+          <div class="more-tip-content">
+            <div class="more-tip-icon-row">
+              <div class="mtic mtic-blue"><i class="ph ph-desktop"></i></div>
+              <span class="more-tip-save">Saves ~65kg CO₂/yr</span>
+            </div>
+            <h3 class="more-tip-title">Go Paperless</h3>
+            <p class="more-tip-desc">Switch to e-bills, digital documents, and e-books. Unsubscribe from junk mail and opt for digital receipts to reduce paper demand and deforestation.</p>
+            <ul class="more-tip-points">
+              <li><i class="ph-fill ph-check-circle"></i> E-statements and e-invoices</li>
+              <li><i class="ph-fill ph-check-circle"></i> Digital note-taking</li>
+              <li><i class="ph-fill ph-check-circle"></i> Reduces deforestation pressure</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════ ABOUT ═══════════════════════════════════════════════ -->
+  <section class="section about-section" id="about" aria-labelledby="aboutHeading">
+    <div class="container">
+      <div class="about-layout">
+        <!-- Left -->
+        <div class="about-content">
+          <div class="section-badge">
+            <i class="ph ph-info" aria-hidden="true"></i>
+            <span>About Us</span>
+          </div>
+          <h2 class="section-title" id="aboutHeading">Why <span class="gradient-text">EcoTrack AI?</span></h2>
+          <p class="about-desc">
+            EcoTrack AI helps individuals understand their environmental impact and provides practical, AI-powered recommendations to live sustainably. We believe that informed choices, made daily by millions of people, can collectively reverse the effects of climate change.
+          </p>
+          <div class="about-features" role="list">
+            <div class="about-feature" role="listitem">
+              <div class="af-icon" aria-hidden="true"><i class="ph ph-robot"></i></div>
+              <div class="af-content">
+                <h4>AI-Powered Insights</h4>
+                <p>Personalized recommendations tailored to your lifestyle and habits.</p>
+              </div>
+            </div>
+            <div class="about-feature" role="listitem">
+              <div class="af-icon" aria-hidden="true"><i class="ph ph-lock"></i></div>
+              <div class="af-content">
+                <h4>100% Private</h4>
+                <p>All data stays on your device. No accounts, no tracking, no servers.</p>
+              </div>
+            </div>
+            <div class="about-feature" role="listitem">
+              <div class="af-icon" aria-hidden="true"><i class="ph ph-chart-line-up"></i></div>
+              <div class="af-content">
+                <h4>Real Impact Tracking</h4>
+                <p>See your weekly progress and measure your actual CO₂ savings.</p>
+              </div>
+            </div>
+          </div>
+          <a href="#calculator" class="btn btn-primary" id="aboutCalcBtn">
+            <i class="ph ph-rocket-launch" aria-hidden="true"></i>
+            Start Tracking Now
+          </a>
+        </div>
+        <!-- Right: Team Photo + Stats overlay -->
+        <div class="about-right">
+          <div class="about-img-frame">
+            <img src="assets/about_team.webp"
+                 alt="EcoTrack AI team collaborating in a sustainable workspace"
+                 loading="lazy"
+                 class="about-team-img" />
+            <div class="about-img-overlay" aria-hidden="true"></div>
+            <!-- Floating stat chips on image -->
+            <div class="about-img-chip chip-tl">
+              <i class="ph ph-users-three"></i>
+              <span><strong>12,000+</strong> Users</span>
+            </div>
+            <div class="about-img-chip chip-br">
+              <i class="ph ph-cloud-fog"></i>
+              <span><strong>850T</strong> CO₂ Saved</span>
+            </div>
+          </div>
+          <div class="about-stats-grid" role="list" aria-label="Platform impact statistics">
+            <div class="about-stat glass-card" role="listitem">
+              <span class="about-stat-num" data-target="12000">0</span>+
+              <span class="about-stat-label">Active Users</span>
+            </div>
+            <div class="about-stat glass-card" role="listitem">
+              <span class="about-stat-num" data-target="850">0</span>T
+              <span class="about-stat-label">CO₂ Saved</span>
+            </div>
+            <div class="about-stat glass-card" role="listitem">
+              <span class="about-stat-num" data-target="45000">0</span>+
+              <span class="about-stat-label">Challenges Done</span>
+            </div>
+            <div class="about-stat glass-card" role="listitem">
+              <span class="about-stat-num" data-target="98">0</span>%
+              <span class="about-stat-label">Satisfaction</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ CONTACT ═══════════════════════════════════════════════ -->
+  <section class="section contact-section" id="contact" aria-labelledby="contactHeading">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">
+          <i class="ph ph-envelope" aria-hidden="true"></i>
+          <span>Get In Touch</span>
+        </div>
+        <h2 class="section-title" id="contactHeading">Have <span class="gradient-text">Questions?</span></h2>
+        <p class="section-subtitle">We'd love to hear from you. Send us a message and we'll get back to you shortly.</p>
+      </div>
+
+      <!-- How Contact Works Banner -->
+      <div class="contact-how-banner glass-card" aria-label="How the contact process works">
+        <div class="chb-step">
+          <div class="chb-icon" aria-hidden="true"><i class="ph ph-pencil-simple"></i></div>
+          <div class="chb-text">
+            <strong>1. Fill the Form</strong>
+            <span>Enter your name, email &amp; message below</span>
+          </div>
+        </div>
+        <div class="chb-arrow" aria-hidden="true"><i class="ph ph-arrow-right"></i></div>
+        <div class="chb-step">
+          <div class="chb-icon chb-blue" aria-hidden="true"><i class="ph ph-paper-plane-tilt"></i></div>
+          <div class="chb-text">
+            <strong>2. We Receive It</strong>
+            <span>Your message arrives instantly to our team</span>
+          </div>
+        </div>
+        <div class="chb-arrow" aria-hidden="true"><i class="ph ph-arrow-right"></i></div>
+        <div class="chb-step">
+          <div class="chb-icon chb-amber" aria-hidden="true"><i class="ph ph-chat-circle-dots"></i></div>
+          <div class="chb-text">
+            <strong>3. We Reply Fast</strong>
+            <span>Response within 24 hours via email</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-layout">
+        <!-- Left: Form -->
+        <form class="contact-form glass-card" id="contactForm" novalidate aria-label="Contact form">
+          <h3 class="contact-form-title">
+            <i class="ph ph-envelope-open" aria-hidden="true"></i>
+            Send Us a Message
+          </h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="contactName">Your Name</label>
+              <input type="text" id="contactName" name="name" class="form-input" placeholder="John Doe" required autocomplete="name" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contactEmail">Email Address</label>
+              <input type="email" id="contactEmail" name="email" class="form-input" placeholder="john@example.com" required autocomplete="email" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contactSubject">Subject</label>
+            <input type="text" id="contactSubject" name="subject" class="form-input" placeholder="How can we help?" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="contactMessage">Message</label>
+            <textarea id="contactMessage" name="message" class="form-textarea" rows="5" placeholder="Your message..." required aria-required="true"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full" id="contactSubmitBtn">
+            <i class="ph ph-paper-plane-tilt" aria-hidden="true"></i>
+            Send Message
+          </button>
+          <div id="contactSuccess" class="contact-success" hidden role="alert">
+            <i class="ph ph-check-circle" aria-hidden="true"></i>
+            Message sent! We'll be in touch soon. 💚
+          </div>
+        </form>
+
+        <!-- Right: Earth Visual + Info -->
+        <div class="contact-right">
+          <div class="contact-earth-wrap">
+            <img src="assets/contact_earth.webp"
+                 alt="Glowing Earth representing global eco connectivity"
+                 loading="lazy"
+                 class="contact-earth-img" />
+            <div class="contact-earth-glow" aria-hidden="true"></div>
+          </div>
+          <div class="contact-info-cards">
+            <div class="contact-item glass-card">
+              <div class="ci-icon" aria-hidden="true"><i class="ph ph-envelope"></i></div>
+              <div>
+                <h4>Email Us</h4>
+                <p><a href="mailto:aashutoshborse73@gmail.com" style="color:var(--green-400);text-decoration:none;">aashutoshborse73@gmail.com</a></p>
+              </div>
+            </div>
+            <div class="contact-item glass-card">
+              <div class="ci-icon ci-blue" aria-hidden="true"><i class="ph ph-map-pin"></i></div>
+              <div>
+                <h4>Location</h4>
+                <p>Global – Powered by the Cloud</p>
+              </div>
+            </div>
+            <div class="contact-item glass-card">
+              <div class="ci-icon ci-amber" aria-hidden="true"><i class="ph ph-clock"></i></div>
+              <div>
+                <h4>Response Time</h4>
+                <p>Within 24 hours, guaranteed</p>
+              </div>
+            </div>
+            <div class="contact-item glass-card">
+              <div class="ci-icon ci-purple" aria-hidden="true"><i class="ph ph-github-logo"></i></div>
+              <div>
+                <h4>Open Source</h4>
+                <p><a href="https://github.com/aashutoshborse-coder" target="_blank" rel="noopener noreferrer" style="color:var(--green-400);text-decoration:none;">View on GitHub →</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ FOOTER ═══════════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-top">
+      <div class="container">
+        <div class="footer-grid">
+          <!-- Brand -->
+          <div class="footer-brand">
+            <a href="#home" class="nav-logo footer-logo" aria-label="EcoTrack AI home">
+              <div class="logo-icon sm">
+                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <circle cx="20" cy="20" r="19" stroke="url(#fLogoGrad)" stroke-width="2"/>
+                  <path d="M20 8 C12 14 10 20 14 26 C16 29 20 30 20 30 C20 30 24 29 26 26 C30 20 28 14 20 8Z" fill="url(#fLeafGrad)"/>
+                  <path d="M20 30 C20 30 18 24 14 20" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                  <defs>
+                    <linearGradient id="fLogoGrad" x1="0" y1="0" x2="40" y2="40">
+                      <stop offset="0%" stop-color="#4ade80"/><stop offset="100%" stop-color="#06b6d4"/>
+                    </linearGradient>
+                    <linearGradient id="fLeafGrad" x1="10" y1="8" x2="30" y2="30">
+                      <stop offset="0%" stop-color="#22c55e"/><stop offset="100%" stop-color="#16a34a"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <span class="logo-text">EcoTrack <span class="logo-accent">AI</span></span>
+            </a>
+            <p class="footer-brand-desc">Empowering individuals to make informed eco-friendly choices and build a sustainable future, one action at a time.</p>
+            <div class="social-links" aria-label="Social media links">
+              <a href="https://github.com/aashutoshborse-coder" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub" title="GitHub – aashutoshborse-coder">
+                <i class="ph ph-github-logo" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="Twitter" title="Twitter/X">
+                <i class="ph ph-x-logo" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="LinkedIn" title="LinkedIn">
+                <i class="ph ph-linkedin-logo" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="social-link" aria-label="Instagram" title="Instagram">
+                <i class="ph ph-instagram-logo" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="footer-col">
+            <h3 class="footer-heading">Quick Links</h3>
+            <ul class="footer-links" role="list">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#calculator">Calculator</a></li>
+              <li><a href="#dashboard">Dashboard</a></li>
+              <li><a href="#tips">Green Tips</a></li>
+              <li><a href="#about">About</a></li>
+            </ul>
+          </div>
+
+          <!-- Resources -->
+          <div class="footer-col">
+            <h3 class="footer-heading">Resources</h3>
+            <ul class="footer-links" role="list">
+              <li><a href="#">Climate Data Sources</a></li>
+              <li><a href="#">Carbon Offset Guide</a></li>
+              <li><a href="#">Eco Blog</a></li>
+              <li><a href="#">Research Papers</a></li>
+              <li><a href="#">Open Source</a></li>
+            </ul>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="footer-col">
+            <h3 class="footer-heading">Stay Updated</h3>
+            <p class="footer-newsletter-desc">Get weekly eco tips and platform updates.</p>
+            <form class="newsletter-form" id="newsletterForm" aria-label="Newsletter subscription form">
+              <input type="email" id="newsletterEmail" placeholder="your@email.com" class="newsletter-input" required aria-label="Email for newsletter" autocomplete="email" />
+              <button type="submit" class="btn btn-primary newsletter-btn" id="newsletterSubmitBtn" aria-label="Subscribe to newsletter">
+                <i class="ph ph-arrow-right" aria-hidden="true"></i>
+              </button>
+            </form>
+            <div id="newsletterSuccess" hidden class="contact-success" role="alert">
+              <i class="ph ph-check-circle" aria-hidden="true"></i>
+              You're subscribed!
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>© 2025 EcoTrack AI. Made with <i class="ph ph-heart" aria-hidden="true" style="color:#f43f5e;"></i> for the planet. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="ph ph-arrow-up" aria-hidden="true"></i>
+  </button>
+
+  <!-- Toast Notifications -->
+  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Main Script -->
+  <script src="script.js"></script>
+</body>
+</html>
